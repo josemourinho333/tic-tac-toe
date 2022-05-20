@@ -5,6 +5,7 @@ let gameTable = [
 ];
 
 let turn = 0;
+$('.popup-container').hide();
 
 function displayTable() {
   console.log(gameTable);
@@ -17,12 +18,15 @@ function newGame() {
     }
   };
   $('.symbol').empty();
+  $('.popup-container').hide();
   turn = 0;
   displayTable();
 }
 
 function congrats(winner) {
-  console.log(typeof winner);
+  console.log(`${winner} wins!`);
+  $('.popup-container').show();
+  $('.winner-popup').text(`${winner} wins!`);
 }
 
 function checkWin () {
@@ -91,10 +95,6 @@ function gameTurn(event) {
     gameTable[row].splice(column, 1, o);
     $(`#cell-${row}-${column} > div`).text('O');
     turn++;
-  }
-
-  if (turn === 9) {
-    console.log('need to start new game');
   }
 
   displayTable();
