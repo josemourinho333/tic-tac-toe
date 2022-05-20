@@ -5,7 +5,10 @@ let gameTable = [
 ];
 
 let turn = 0;
-$('.popup-container').hide();
+$('.popup-container').show();
+$('.start-game-again').hide();
+let x = $('.playerX').val();
+let o = $('.playerO').val();
 
 function displayTable() {
   console.log(gameTable);
@@ -20,65 +23,78 @@ function newGame() {
   $('.symbol').empty();
   $('.popup-container').hide();
   turn = 0;
-  displayTable();
+  x = $('.playerX').val();
+  o = $('.playerO').val();
+}
+
+function anotherGame() {
+  $('.players').show();
+  $('.start-game').show();
+  $('.start-game-again').hide();
+  $('.winner-popup').hide();
 }
 
 function congrats(winner) {
-  console.log(`${winner} wins!`);
   $('.popup-container').show();
+  $('.start-game').hide()
+  $('.start-game-again').show();
+  $('.winner-popup').show();
+  $('.players').hide();
+  $('.playerX').val('');
+  $('.playerO').val('');
   $('.winner-popup').text(`${winner} wins!`);
 }
 
 function checkWin () {
   // Rows
   if (gameTable[0][0] + gameTable[0][1] + gameTable[0][2] === 3) {
-    congrats('x');
+    congrats(x);
   } else if (gameTable[0][0] + gameTable[0][1] + gameTable[0][2] === -3) {
-    congrats('o');
+    congrats(o);
   }
 
   if (gameTable[1][0] + gameTable[1][1] + gameTable[1][2] === 3) {
-    congrats('x');
+    congrats(x);
   } else if (gameTable[1][0] + gameTable[1][1] + gameTable[1][2] === -3) {
-    congrats('o');
+    congrats(o);
   }
 
   if (gameTable[2][0] + gameTable[2][1] + gameTable[2][2] === 3) {
-    congrats('x');
+    congrats(x);
   } else if (gameTable[2][0] + gameTable[2][1] + gameTable[2][2] === -3) {
-    congrats('o');
+    congrats(o);
   }
 
   // Columns
   if (gameTable[0][0] + gameTable[1][0] + gameTable[2][0] === 3) {
-    congrats('x');
+    congrats(x);
   } else if (gameTable[0][0] + gameTable[1][0] + gameTable[2][0] === -3) {
-    congrats('o');
+    congrats(o);
   }
 
   if (gameTable[0][1] + gameTable[1][1] + gameTable[2][1] === 3) {
-    congrats('x');
+    congrats(x);
   } else if (gameTable[0][1] + gameTable[1][1] + gameTable[2][1] === -3) {
-    congrats('o');
+    congrats(o);
   }
 
   if (gameTable[0][2] + gameTable[1][2] + gameTable[2][2] === 3) {
-    congrats('x');
+    congrats(x);
   } else if (gameTable[0][2] + gameTable[1][2] + gameTable[2][2] === -3) {
-    congrats('o');
+    congrats(o);
   }
 
   // Diagonal
   if (gameTable[0][0] + gameTable[1][1] + gameTable[2][2] === 3) {
-    congrats('x');
+    congrats(x);
   } else if (gameTable[0][0] + gameTable[1][1] + gameTable[2][2] === -3) {
-    congrats('o');
+    congrats(o);
   }
 
   if (gameTable[0][2] + gameTable[1][1] + gameTable[2][0] === 3) {
-    congrats('x');
+    congrats(x);
   } else if (gameTable[0][2] + gameTable[1][1] + gameTable[2][0] === -3) {
-    congrats('o');
+    congrats(o);
   }
 }
 
@@ -103,3 +119,4 @@ function gameTurn(event) {
 
 $('.start-game').click(newGame);
 $('.game-cell').click(gameTurn);
+$('.start-game-again').click(anotherGame);
