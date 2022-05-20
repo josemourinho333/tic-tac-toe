@@ -11,8 +11,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-  <div class="game-control">
-    <button class="start-game">Start New Game</button>
+  <div class="header-container">
+    <div class="game-header">Tic-Tac-Toe</div>
   </div>
   <div class="game-container">
     <div class="game-cell" id="cell-0-0"><div class="symbol"></div></div>
@@ -28,8 +28,15 @@
     <div class="game-cell" id="cell-2-2"><div class="symbol"></div></div>
   </div>
   <div class="popup-container">
+    <div class="players">
+      <input class="playerX" placeholder="Enter player X">
+    </div>
+    <div class="players">
+      <input class="playerO" placeholder="Enter player O">
+    </div>
     <div class="winner-popup"></div>
-    <button class="start-game">Start New Game</button>
+    <button class="start-game">Start</button>
+    <button class="start-game-again">Play Another</button>
   </div>
 </body>
 <script src="script.js"></script>
